@@ -1,7 +1,6 @@
 service:
   name: project-service
 
-# Add the serverless-webpack plugin
 plugins:
   - serverless-webpack
   - serverless-offline
@@ -11,9 +10,9 @@ provider:
   runtime: nodejs6.10
   stage: ${opt:stage, 'dev'}
   environment:
-    MONGO_DB_URI: ${env:MONGO_DB_URI, file(./config/${self:provider.stage}.js):db.uri}
-    MONGO_DB_NAME: ${env:MONGO_DB_NAME, file(./config/${self:provider.stage}.js):db.name}-${self:provider.stage}
-    MONGO_DB_PARAMS: ${env:MONGO_DB_PARAMS, file(./config/${self:provider.stage}.js):db.params}
+    MONGO_DB_URI: ${env:MONGO_DB_URI, file(./config/${self:custom.config}.js):db.uri}
+    MONGO_DB_NAME: ${env:MONGO_DB_NAME, file(./config/${self:custom.config}.js):db.name}-${self:provider.stage}
+    MONGO_DB_PARAMS: ${env:MONGO_DB_PARAMS, file(./config/${self:custom.config}.js):db.params}
 
 functions:
   getProject:
@@ -46,6 +45,7 @@ functions:
           path: projects/{id}/group
 
 custom:
+  config: ${opt:config, self:provider.stage}
   webpackIncludeModules: true
   serverless-offline:
     port: 3001

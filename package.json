@@ -5,7 +5,8 @@
   "main": "handler.js",
   "scripts": {
     "test": "NODE_ENV=test jest",
-    "deploy:prod": "serverless deploy -s prod -v"
+    "deploy:prod": "serverless deploy -s prod -v",
+    "deploy:branch": "serverless deploy --config dev"
   },
   "devDependencies": {
     "@types/jest": "^21.1.4",
