@@ -11,7 +11,7 @@ provider:
   stage: ${opt:stage, 'dev'}
   environment:
     MONGO_DB_URI: ${env:MONGO_DB_URI, file(./config/${self:custom.config}.js):db.uri}
-    MONGO_DB_NAME: ${env:MONGO_DB_NAME, file(./config/${self:custom.config}.js):db.name}-${self:provider.stage}
+    MONGO_DB_NAME: ${env:MONGO_DB_NAME, file(./config/${self:custom.config}.js):db.name}-${self:custom.config}
     MONGO_DB_PARAMS: ${env:MONGO_DB_PARAMS, file(./config/${self:custom.config}.js):db.params}
 
 functions:
