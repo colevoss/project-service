@@ -4,25 +4,43 @@ This is the project microservice for the Adio project. It is reponisbile for cre
 
 ## Types
 ### Project
-*`_id`*: `string` Unique ID of a project. 
+*_id*: `string` Unique ID of a project. 
 
-*`name`*: `string` Name of the project
+*name*: `string` Name of the project
 
-*`groupId`*: `string` Unique ID of the group that this project belongs to.
+*groupId*: `string` Unique ID of the group that this project belongs to.
 
 ### ProjectInput
-*`name`*: Name of the new project
+*name*: Name of the new project
 
-*`groupId`*: Unique ID of the group that the project belongs to.
+*groupId*: Unique ID of the group that the project belongs to.
 
 
 ## Endpoints
 
 ### Get Projects
 #### Endpoint:
-`/projects?ids=[id,id,id]`
+*GET* `/projects?ids=[id,id,id]`
 
-##### Returns:
+#### Returns:
 `Array<Project>`
 
 Used for fetching multiple projects by ids. You must include the `ids` query param as a comma separated list of project ids.
+
+### Get Project
+#### Endpoint:
+*GET* `/projects/{id}`
+
+#### Returns:
+`Project`
+
+Used For fetching one project by id.
+
+#### Endpoint:
+*POST* `/projects`
+
+#### Params:
+`ProjectInput`
+
+#### Returns:
+`Project`
