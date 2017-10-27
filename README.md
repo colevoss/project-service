@@ -45,3 +45,17 @@ Used For fetching one project by id.
 
 ##### Returns:
 `Project`
+
+### Set Group
+##### Endpoint
+**PUT** `projects/{id}/group`
+
+##### Params:
+```javascript
+{ groupId: string }
+```
+
+##### Returns:
+`Project`
+
+Sets the projects group to the provided group id
