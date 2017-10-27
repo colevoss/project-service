@@ -39,6 +39,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               yarn deploy:prod
             else
-              echo $MONGO_DB_NAME
-              yarn deploy:branch -- -s $(echo $CIRCLE_BRANCH | sed -e 's/[^a-zA-Z0-9]//g')
+              # echo $MONGO_DB_NAME
+              # yarn deploy:branch -- -s $(echo $CIRCLE_BRANCH | sed -e 's/[^a-zA-Z0-9]//g')
+              yarn deploy:dev
             fi

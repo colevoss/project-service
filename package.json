@@ -6,7 +6,8 @@
   "scripts": {
     "test": "NODE_ENV=test jest",
     "deploy:prod": "serverless deploy -s prod -v",
-    "deploy:branch": "serverless deploy --config dev"
+    "deploy:branch": "serverless deploy --config dev",
+    "deploy:dev": "serverless deploy -s dev"
   },
   "devDependencies": {
     "@types/jest": "^21.1.4",
