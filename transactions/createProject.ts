@@ -10,7 +10,7 @@ export const createProject = async (db: IDb, projectInput: IProjectInput): Promi
   const projectInsert = await db.collection('projects').insertOne(projectData);
 
   if (projectInsert.insertedCount == 0) {
-    throw 'A user could not be created';
+    throw 'A project could not be created';
   }
 
   const projectId = projectInsert.insertedId;
