@@ -6,13 +6,13 @@ let MONGO_DB_URI: string = process.env.MONGO_DB_URI || '';
 let MONGO_DB_NAME: string = process.env.MONGO_DB_NAME || '';
 let MONGO_DB_PARAMS: string = process.env.MONGO_DB_PARAMS || '';
 
-console.log(MONGO_DB_NAME);
-
 if (env === 'test') {
   MONGO_DB_URI = 'mongodb://localhost:27017';
   MONGO_DB_NAME = 'adio-projects-test';
   MONGO_DB_PARAMS = '';
 }
+
+console.log(MONGO_DB_URI);
 
 let dbCache: IDb;
 

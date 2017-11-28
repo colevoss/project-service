@@ -11,9 +11,9 @@ provider:
   runtime: nodejs6.10
   stage: ${opt:stage, 'dev'}
   environment:
-    MONGO_DB_URI: ${env:MONGO_DB_URI, file(./config/${self:provider.stage}.js):db.uri}
-    MONGO_DB_NAME: ${env:MONGO_DB_NAME, file(./config/${self:provider.stage}.js):db.name}-${self:provider.stage}
-    MONGO_DB_PARAMS: ${env:MONGO_DB_PARAMS, file(./config/${self:provider.stage}.js):db.params}
+    MONGO_DB_URI: ${env:MONGO_DB_URI, file(./config/${self:custom.config}.js):db.uri}
+    MONGO_DB_NAME: ${env:MONGO_DB_NAME, file(./config/${self:custom.config}.js):db.name}-${self:custom.config}
+    MONGO_DB_PARAMS: ${env:MONGO_DB_PARAMS, file(./config/${self:custom.config}.js):db.params}
 
 functions:
   getProject:
@@ -45,7 +45,22 @@ functions:
           method: put
           path: projects/{id}/group
 
+  addTrack:
+    handler: handlers/addTrack.addTrackHandler
+    events:
+      - http:
+          method: put
+          path: projects/{id}/tracks
+
+  removeTrack:
+    handler: handlers/removeTrack.removeTrackHandler
+    events:
+      - http:
+          method: delete
+          path: projects/{id}/tracks/{trackId}
+
 custom:
+  config: ${opt:config, self:provider.stage}
   webpackIncludeModules: true
   serverless-offline:
     port: 3001

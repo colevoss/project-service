@@ -1,11 +1,12 @@
 {
-  "name": "adio-group-service",
+  "name": "adio-project-service",
   "version": "1.0.0",
-  "description": "Group service for Adio project",
+  "description": "Project service for Adio project",
   "main": "handler.js",
   "scripts": {
     "test": "NODE_ENV=test jest",
-    "deploy:prod": "serverless deploy -s prod -v"
+    "deploy:prod": "serverless deploy -s prod -v",
+    "local": "serverless offline start --config local"
   },
   "devDependencies": {
     "@types/jest": "^21.1.4",
